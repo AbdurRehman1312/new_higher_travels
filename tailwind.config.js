@@ -13,6 +13,9 @@ module.exports = {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			colors: {
+				'custom-blue': "#2C4662",
+				'custom-gold': "#a37000",
+				'custom-light-gold': "#ffce61",
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				card: {
@@ -53,6 +56,9 @@ module.exports = {
 					'4': 'hsl(var(--chart-4))',
 					'5': 'hsl(var(--chart-5))'
 				}
+			},
+			fontFamily:{
+				archivo: ['Archivo', 'sans-serif']
 			}
 		}
 	},

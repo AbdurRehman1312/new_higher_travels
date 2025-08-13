@@ -72,10 +72,15 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border font-archivo;
   }
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  .bg_gradient {
+    background: #FFCE61;
+    background: linear-gradient(101deg, #ffce61 0%, #a37000 100%);
   }
 }

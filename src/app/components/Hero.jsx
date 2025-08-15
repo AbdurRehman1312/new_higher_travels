@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { MapPin, PlaneTakeoff, Sparkles } from 'lucide-react';
+import GradientButton from '@/components/ui/GradientButton';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -10,7 +11,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[680px] md:min-h-[620px] lg:min-h-[620px] max-w-[1920px] mx-auto overflow-hidden">
+    <section className="relative min-h-[87vh] lg:min-h-[83vh] overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <img
@@ -56,7 +57,7 @@ const Hero = () => {
       {/* Content container */}
       <div className="relative z-10 h-full">
         <div className="mx-auto max-w-7xl px-2 lg:px-0">
-          <div className="grid h-[680px] md:h-[620px] lg:h-[620px] grid-cols-1 lg:grid-cols-2 items-center gap-10">
+          <div className="grid min-h-[87vh] lg:min-h-[83vh] grid-cols-1 lg:grid-cols-2 items-center gap-10">
 
             {/* Left: Enhanced content with animations */}
             <div className={`flex flex-col gap-y-4 text-white max-w-2xl transform transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
@@ -85,13 +86,13 @@ const Hero = () => {
 
               {/* Enhanced button with gradient */}
               <div className="pt-2">
-                <button className="group relative mt-2 h-12 px-8 rounded-lg bg_gradient text-white font-bold shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/25 overflow-hidden">
+                <GradientButton className="group relative mt-2 h-12 px-8 rounded-lg bg_gradient text-white font-bold shadow-lg transform transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/25 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-r from-yellow-300/20 to-orange-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="relative z-10 flex items-center gap-2">
                     <PlaneTakeoff className="w-5 h-5" />
                     Get Started
                   </span>
-                </button>
+                </GradientButton>
               </div>
             </div>
 

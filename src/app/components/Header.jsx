@@ -176,7 +176,7 @@ const Header = () => {
                     ></div>
 
                     {/* Sidebar */}
-                    <div className="relative w-[85%] h-full bg-white/30 sidebar shadow-2xl transform transition-transform duration-300 ease-out">
+                    <div className="relative w-[85%] h-full bg-gradient-to-r from-gray-800 to-gray-900 sidebar shadow-2xl transform transition-transform duration-300 ease-out">
                         {/* Background effects */}
                         <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-transparent to-orange-500/10"></div>
                         <div className="absolute top-10 right-10 w-32 h-32 bg-yellow-400/20 rounded-full blur-3xl"></div>

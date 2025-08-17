@@ -21,18 +21,14 @@ const WhoWeAre = () => {
     ];
 
     return (
-        <section className="relative py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden">
-            {/* Background Decorative Elements */}
-            <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-br from-yellow-400/10 to-blue-500/10 rounded-full blur-2xl"></div>
-            <div className="absolute bottom-10 left-10 w-40 h-40 bg-gradient-to-br from-blue-500/10 to-yellow-400/10 rounded-full blur-2xl"></div>
-
-            <div className="max-w-7xl mx-auto px-3 lg:px-0">
+        <section className="relative py-20 overflow-hidden">
+            <div className="w-[97%] lg:w-[90%] max-w-[1920px] mx-auto px-3 lg:px-0">
                 <div className="flex flex-col-reverse lg:flex-row items-center gap-16">
                     {/* Left Side - Enhanced Images */}
                     <div className="relative flex-1 group w-full">
                         {/* Main Image Container */}
                         <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-yellow-400/20 transform transition-all duration-700 ease-out w-full">
-                            <div className="flex items-center justify-center relative min-h-[650px] w-full">
+                            <div className="flex items-center justify-center relative min-h-[350px] lg:min-h-[650px] w-full">
                                 {/* Image for mobile and desktop */}
                                 <Image
                                     src="/images/kaaba.jpg"
@@ -46,7 +42,7 @@ const WhoWeAre = () => {
                         </div>
 
                         {/* Floating Stats Card */}
-                        <div className="absolute -bottom-8 right-10 lg:-right-8 bg-white rounded-2xl p-6 shadow-xl border border-gray-100 transform group-hover:scale-110 transition-all duration-500">
+                        <div className="absolute -bottom-8 right-4 lg:-right-8 bg-white rounded-2xl p-6 shadow-xl border border-gray-100 transform group-hover:scale-110 transition-all duration-500">
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center">
                                     <Award className="w-6 h-6 text-white" />

@@ -56,7 +56,7 @@ const Hero = () => {
 
       {/* Content container */}
       <div className="relative z-10 h-full">
-        <div className="mx-auto max-w-7xl px-2 lg:px-0">
+        <div className="mx-auto w-[97%] lg:w-[90%] max-w-[1920px] px-2 lg:px-0">
           <div className="grid min-h-[87vh] lg:min-h-[83vh] grid-cols-1 lg:grid-cols-2 items-center gap-10">
 
             {/* Left: Enhanced content with animations */}

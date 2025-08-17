@@ -75,7 +75,7 @@ const Header = () => {
         <>
             {/* Top contact bar */}
             <div className="hidden lg:block bg-gradient-to-r bg-gray-800 text-white py-2">
-                <div className="max-w-7xl mx-auto px-4 lg:px-0 flex justify-between items-center text-sm">
+                <div className="w-[97%] lg:w-[90%] max-w-[1920px] mx-auto px-4 lg:px-0 flex justify-between items-center text-sm">
                     <div className="flex items-center gap-6">
                         <div className="flex items-center gap-2">
                             <Phone className="w-4 h-4 text-yellow-400" />
@@ -100,7 +100,7 @@ const Header = () => {
                     : "bg-white/90 backdrop-blur-md shadow-md"
                     }`}
             >
-                <div className="hidden z-[10] lg:flex justify-between items-center py-4 w-full max-w-7xl mx-auto px-4 lg:px-0">
+                <div className="hidden z-[10] lg:flex justify-between items-center py-4 w-[97%] lg:w-[90%] max-w-[1920px] mx-auto px-4 lg:px-0">
                     {/* Logo section */}
                     <div className="flex items-center gap-3">
                         <Logo src="/images/logo.png" alt="Logo" width={60} height={60} />

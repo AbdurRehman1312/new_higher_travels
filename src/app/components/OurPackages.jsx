@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Star, Clock, Users, MapPin, CheckCircle, ArrowRight } from 'lucide-react'
 import GradientButton from '@/components/ui/GradientButton';
+import { WHATSAPP_URL } from '@/lib/contact';
 
 const OurPackages = () => {
     const packages = [
@@ -65,7 +66,7 @@ const OurPackages = () => {
     ];
 
     return (
-        <section className="relative py-20 overflow-hidden">
+        <section id="packages" className="relative py-20 overflow-hidden">
             <div className="w-[97%] lg:w-[90%] max-w-[1920px] mx-auto px-3 lg:px-0">
                 {/* Section Header */}
                 <div className="text-center mb-16">
@@ -159,7 +160,7 @@ const OurPackages = () => {
                                 </div>
 
                                 {/* CTA Button */}
-                                <GradientButton className='w-full'>
+                                <GradientButton href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className='w-full'>
                                     <div className="flex items-center justify-center gap-3">
                                         <span>Book Now</span>
                                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -173,10 +174,15 @@ const OurPackages = () => {
                 {/* Bottom CTA */}
                 <div className="text-center mt-12">
                     <p className="text-gray-600 mb-4">Need a custom package? We're here to help!</p>
-                    <button className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-custom-blue font-semibold px-8 py-3 rounded-xl border-2 border-custom-blue transition-all duration-300">
+                    <a
+                        href={WHATSAPP_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-custom-blue font-semibold px-8 py-3 rounded-xl border-2 border-custom-blue transition-all duration-300"
+                    >
                         <Users className="w-5 h-5" />
                         <span>Contact Our Experts</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>

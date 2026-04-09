@@ -1,10 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { AlignJustify, X, Star, Phone, Mail } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import GradientButton from "@/components/ui/GradientButton";
+import { CONTACT_PHONE_DISPLAY, WHATSAPP_URL } from "@/lib/contact";
 
 const Logo = ({ src, width, height, alt, onClick, className }) => (
     <Link href="/" onClick={onClick} className={`transform transition-transform duration-300 hover:scale-105 ${className}`}>
@@ -23,7 +24,6 @@ const Logo = ({ src, width, height, alt, onClick, className }) => (
 const Header = () => {
     const [toggle, setToggle] = React.useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const router = useRouter();
     const pathname = usePathname();
 
     // Handle scroll effect
@@ -35,41 +35,68 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const isActive = (path) => {
-        return pathname === path;
+    const isActive = (href) => {
+        // Only highlight actual pages (this site is landing-page-only for now)
+        return href === "/" && pathname === "/";
     };
 
     const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
     const navLinks = [
         { name: "Home", href: "/" },
-        { name: "About Us", href: "/about-us" },
-        { name: "Packages", href: "/packages" },
-        { name: "Contact Us", href: "/contact-us" },
+        { name: "About Us", href: "/#about" },
+        { name: "Packages", href: "/#packages" },
+        { name: "Contact Us", href: WHATSAPP_URL },
     ];
 
-    const renderedNavLinks = navLinks.map(({ name, href }) => (
-        <Link
-            href={href}
-            key={name}
-            className={`relative px-4 py-2 rounded-lg font-semibold transition-all duration-300 ease-in-out transform group ${toggle ? "text-white hover:text-yellow-300" : "text-gray-700"
-                } ${isActive(href)
-                    ? toggle
-                        ? "text-yellow-300 bg-white/20"
-                        : "text-blue-600 bg-blue-50"
-                    : ""
-                }`}
-            onClick={() => setToggle(false)}
-        >
-            <span className="relative z-10">{name}</span>
-            {/* Animated underline */}
+    const renderedNavLinks = navLinks.map(({ name, href }) => {
+        const commonClassName = `relative px-4 py-2 rounded-lg font-semibold transition-all duration-300 ease-in-out transform group ${toggle ? "text-white hover:text-yellow-300" : "text-gray-700"
+            } ${isActive(href)
+                ? toggle
+                    ? "text-yellow-300 bg-white/20"
+                    : "text-blue-600 bg-blue-50"
+                : ""
+            }`;
+
+        const underline = (
             <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[2px] bg-gradient-to-r from-custom-light-gold to-custom-gold transition-all duration-300 ${isActive(href) ? "w-full" : "w-0 group-hover:w-full"
                 }`}></div>
+        );
 
-            {/* Hover glow effect */}
+        const glow = (
             <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-yellow-400/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </Link>
-    ));
+        );
+
+        if (href.startsWith("http")) {
+            return (
+                <a
+                    href={href}
+                    key={name}
+                    className={commonClassName}
+                    onClick={() => setToggle(false)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <span className="relative z-10">{name}</span>
+                    {underline}
+                    {glow}
+                </a>
+            );
+        }
+
+        return (
+            <Link
+                href={href}
+                key={name}
+                className={commonClassName}
+                onClick={() => setToggle(false)}
+            >
+                <span className="relative z-10">{name}</span>
+                {underline}
+                {glow}
+            </Link>
+        );
+    });
 
     return (
         <>
@@ -79,7 +106,9 @@ const Header = () => {
                     <div className="flex items-center gap-6">
                         <div className="flex items-center gap-2">
                             <Phone className="w-4 h-4 text-yellow-400" />
-                            <span>+1 (555) 123-4567</span>
+                            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                                {CONTACT_PHONE_DISPLAY}
+                            </a>
                         </div>
                         <div className="flex items-center gap-2">
                             <Mail className="w-4 h-4 text-yellow-400" />
@@ -122,7 +151,7 @@ const Header = () => {
                             <span>Available 24/7</span>
                         </div> */}
 
-                        <GradientButton>Book Now</GradientButton>
+                        <GradientButton href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">Book Now</GradientButton>
                     </div>
                 </div>
             </header>
@@ -220,6 +249,9 @@ const Header = () => {
 
                                 <GradientButton
                                     className="w-full py-3 hover:scale-105 shadow-lg hover:shadow-xl"
+                                    href={WHATSAPP_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     onClick={() => setToggle(false)}
                                 >
                                     Book Your Trip Now

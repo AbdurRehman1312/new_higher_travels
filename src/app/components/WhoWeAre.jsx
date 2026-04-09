@@ -3,6 +3,7 @@ import React from "react";
 import { Star, Award, Users, Clock, CheckCircle, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import GradientButton from "@/components/ui/GradientButton";
+import { WHATSAPP_URL } from "@/lib/contact";
 
 const WhoWeAre = () => {
     const features = [
@@ -21,7 +22,7 @@ const WhoWeAre = () => {
     ];
 
     return (
-        <section className="relative py-20 overflow-hidden">
+        <section id="about" className="relative py-20 overflow-hidden">
             <div className="w-[97%] lg:w-[90%] max-w-[1920px] mx-auto px-3 lg:px-0">
                 <div className="flex flex-col-reverse lg:flex-row items-center gap-16">
                     {/* Left Side - Enhanced Images */}
@@ -111,7 +112,7 @@ const WhoWeAre = () => {
                         </div>
 
                         {/* CTA Button */}
-                        <GradientButton>
+                        <GradientButton href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                             Discover More
                         </GradientButton>
                     </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Mail, Phone, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
+import { CONTACT_PHONE_DISPLAY, WHATSAPP_URL } from '@/lib/contact'
 
 const SocialBar = () => {
     return (
@@ -9,11 +10,13 @@ const SocialBar = () => {
                 <div className="flex items-center space-x-6">
                     <div className="flex items-center space-x-2">
                         <Mail className="h-4 w-4" />
-                        <span className="text-sm">info@yourcompany.com</span>
+                        <span className="text-sm">info@newhighertravels.com</span>
                     </div>
                     <div className="flex items-center space-x-2">
                         <Phone className="h-4 w-4" />
-                        <span className="text-sm">+1 (555) 123-4567</span>
+                        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-sm hover:underline">
+                            {CONTACT_PHONE_DISPLAY}
+                        </a>
                     </div>
                 </div>
 

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { MapPin, PlaneTakeoff, Sparkles } from 'lucide-react';
 import GradientButton from '@/components/ui/GradientButton';
+import { WHATSAPP_URL } from '@/lib/contact';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -86,7 +87,12 @@ const Hero = () => {
 
               {/* Enhanced button with gradient */}
               <div className="pt-2">
-                <GradientButton className="group relative mt-2 h-12 px-8 rounded-lg bg_gradient text-white font-bold shadow-lg transform transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/25 overflow-hidden">
+                <GradientButton
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative mt-2 h-12 px-8 rounded-lg bg_gradient text-white font-bold shadow-lg transform transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/25 overflow-hidden"
+                >
                   <div className="absolute inset-0 bg-gradient-to-r from-yellow-300/20 to-orange-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="relative z-10 flex items-center gap-2">
                     <PlaneTakeoff className="w-5 h-5" />

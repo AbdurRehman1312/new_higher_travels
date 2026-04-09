@@ -52,7 +52,7 @@ const Faqs = () => {
         setOpenFaq(openFaq === id ? null : id);
     };
     return (
-        <section className="relative py-20 overflow-hidden">
+        <section id="faqs" className="relative py-20 overflow-hidden">
 
             <div className="w-[97%] lg:w-[90%] max-w-[1920px] mx-auto px-3 lg:px-0">
                 {/* Section Header */}

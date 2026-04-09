@@ -31,7 +31,7 @@ const WhyChooseUs = () => {
     ];
 
     return (
-        <section className="relative py-20 overflow-hidden">
+        <section id="why-choose" className="relative py-20 overflow-hidden">
 
             <div className="w-[97%] lg:w-[90%] max-w-[1920px] mx-auto px-3 lg:px-0">
                 <div className="flex flex-col lg:flex-row gap-16 items-start">

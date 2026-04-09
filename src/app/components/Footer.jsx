@@ -14,9 +14,28 @@ import {
   Star
 } from 'lucide-react'
 import Image from 'next/image';
+import { CONTACT_PHONE_DISPLAY, WHATSAPP_URL } from '@/lib/contact';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const ComingSoonIcon = ({ icon: IconComponent, name }) => (
+    <span className="relative group">
+      <span
+        className="bg-custom-gold p-2 rounded-full opacity-80 cursor-not-allowed inline-flex items-center justify-center"
+        aria-label={`${name} (coming soon)`}
+        role="img"
+      >
+        <IconComponent className="w-4 h-4 text-white" />
+      </span>
+      <span
+        role="tooltip"
+        className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 px-3 py-1 text-xs text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100"
+      >
+        coming soon
+      </span>
+    </span>
+  );
 
   const quickLinks = [
     { name: 'About Us', href: '#about' },
@@ -24,7 +43,7 @@ const Footer = () => {
     { name: 'Why Choose Us', href: '#why-choose' },
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'FAQs', href: '#faqs' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Contact', href: WHATSAPP_URL }
   ];
 
   const services = [
@@ -53,7 +72,7 @@ const Footer = () => {
     { name: 'LinkedIn', icon: Linkedin, href: '#' }
   ];
   return (
-    <footer className='bg-gradient-to-r from-gray-800 to-gray-900 pt-16 pb-6'>
+    <footer id="contact" className='bg-gradient-to-r from-gray-800 to-gray-900 pt-16 pb-6'>
       <div className="w-[97%] lg:w-[90%] max-w-[1920px] mx-auto px-3 lg:px-0">
         {/* Main Footer Content */}
         <div className="flex flex-col lg:flex-row justify-between gap-8 mb-12">
@@ -83,7 +102,9 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-custom-gold flex-shrink-0" />
-                <span className="text-blue-200 text-sm">+1 (555) 123-4567</span>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-blue-200 text-sm hover:underline">
+                  {CONTACT_PHONE_DISPLAY}
+                </a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-custom-gold flex-shrink-0" />
@@ -106,6 +127,8 @@ const Footer = () => {
                   <li key={index}>
                     <a
                       href={link.href}
+                      target={link.href.startsWith('http') ? '_blank' : undefined}
+                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       className="text-blue-200 text-sm hover:text-custom-gold transition-colors duration-300 hover:underline"
                     >
                       {link.name}
@@ -121,12 +144,9 @@ const Footer = () => {
               <ul className="space-y-3">
                 {services.map((service, index) => (
                   <li key={index}>
-                    <a
-                      href={service.href}
-                      className="text-blue-200 text-sm hover:text-custom-gold transition-colors duration-300 hover:underline"
-                    >
+                    <span className="text-blue-200 text-sm">
                       {service.name}
-                    </a>
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -138,12 +158,9 @@ const Footer = () => {
               <ul className="space-y-3">
                 {support.map((item, index) => (
                   <li key={index}>
-                    <a
-                      href={item.href}
-                      className="text-blue-200 text-sm hover:text-custom-gold transition-colors duration-300 hover:underline"
-                    >
+                    <span className="text-blue-200 text-sm">
                       {item.name}
-                    </a>
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -179,19 +196,9 @@ const Footer = () => {
             {/* Social Media Icons */}
             <div className="flex items-center gap-4">
               <span className="text-blue-200 text-sm mr-2">Follow Us:</span>
-              {socialLinks.map((social, index) => {
-                const IconComponent = social.icon;
-                return (
-                  <a
-                    key={index}
-                    href={social.href}
-                    className="bg-custom-gold hover:bg-custom-light-gold p-2 rounded-full transition-colors duration-300 group"
-                    aria-label={social.name}
-                  >
-                    <IconComponent className="w-4 h-4 text-white" />
-                  </a>
-                );
-              })}
+              {socialLinks.map((social, index) => (
+                <ComingSoonIcon key={index} icon={social.icon} name={social.name} />
+              ))}
             </div>
 
             {/* Copyright */}
@@ -199,6 +206,18 @@ const Footer = () => {
               <p className="text-blue-200 text-sm">
                 &copy; {currentYear} New Higher Travels. All rights reserved.
               </p>
+            </div>
+
+            {/* Made by */}
+            <div className="text-center md:text-right">
+              <a
+                href="https://www.mkaits.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-200 text-sm hover:underline"
+              >
+                Made by Mkaits Technologies
+              </a>
             </div>
           </div>
         </div>
